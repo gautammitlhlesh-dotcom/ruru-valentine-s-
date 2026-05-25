@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Will you be my Valentine, Ruru? 💕</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #1a0033, #4a0022);
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .container {
+      text-align: center;
+      z-index: 10;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      text-shadow: 0 0 20px #ff69b4;
+    }
+
+    .gif {
+      margin: 20px auto;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(255, 105, 180, 0.6);
+    }
+
+    .buttons {
+      margin: 30px 0;
+    }
+
+    button {
+      padding: 15px 40px;
+      margin: 10px;
+      font-size: 1.3em;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    #yesBtn {
+      background: #ff1493;
+      color: white;
+      font-weight: bold;
+    }
+
+    #noBtn {
+      background: #555;
+      color: white;
+    }
+
+    #yesBtn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 25px #ff1493;
+    }
+
+    .message {
+      margin-top: 30px;
+      font-size: 1.4em;
+      line-height: 1.5;
+      opacity: 0;
+      transition: opacity 1s;
+    }
+
+    .hearts {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 25px;
+      color: #ff1493;
+      animation: fall linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+      }
+    }
+
+    .music-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: rgba(255,255,255,0.2);
+      border: 1px solid #ff69b4;
+      border-radius: 30px;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hearts" id="hearts"></div>
+
+  <div class="container">
+    <h1>Will you be my Valentine, <span style="color:#ff69b4;">Ruru</span>? 💕</h1>
+    
+    <img src="https://media.tenor.com/EBV7OT7ACfwAAAAj/u-u-qua-qua-u-quaa.gif" 
+         class="gif" width="220" alt="cute gif">
+
+    <div class="buttons">
+      <button id="yesBtn">Yes 💖</button>
+      <button id="noBtn">No 😢</button>
+    </div>
+
+    <button class="music-btn" id="musicBtn">🎵 Play Music</button>
+
+    <div class="message" id="message">
+      Thank you Ruru for saying Yes! ❤️<br>
+      I love you so much. You make every day special!
+    </div>
+  </div>
+
+  <audio id="bgMusic" loop>
+    <source src="https://assets.mixkit.co/sfx/preview/296/296.wav" type="audio/wav">
+  </audio>
+
+  <script>
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+    const message = document.getElementById('message');
+    let yesSize = 1;
+
+    noBtn.addEventListener('mouseover', () => {
+      const x = Math.random() * 300 - 150;
+      const y = Math.random() * 200 - 100;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    });
+
+    yesBtn.addEventListener('click', () => {
+      yesSize += 0.3;
+      yesBtn.style.transform = `scale(${yesSize})`;
+      
+      if (yesSize
